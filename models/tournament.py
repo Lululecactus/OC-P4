@@ -18,7 +18,7 @@ class Tournament:
         return self.current_round >= self.number_of_rounds
 
     def generate_round_pairs_random(self):
-        
+        pass
 # 1. Mélanger les joueurs de manière aléatoire
 # 2. Les associer par paires
 # 3. S'il y a un nombre impair de joueurs, le dernier joueur ne sera pas associé
