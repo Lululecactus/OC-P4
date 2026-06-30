@@ -1,0 +1,30 @@
+[
+  {
+    "last_name": "Dupont",
+    "first_name": "Alice",
+    "birth_date": "1995-04-12",
+    "chess_id": "AB12345",
+    "points": 0.0
+  },
+  {
+    "last_name": "Martin",
+    "first_name": "Bob",
+    "birth_date": "1998-11-02",
+    "chess_id": "CD67890",
+    "points": 0.0
+  },
+  {
+    "last_name": "Leroy",
+    "first_name": "Claire",
+    "birth_date": "2000-01-23",
+    "chess_id": "EF11223",
+    "points": 0.0
+  },
+  {
+    "last_name": "Nguyen",
+    "first_name": "David",
+    "birth_date": "1992-07-09",
+    "chess_id": "GH44556",
+    "points": 0.0
+  }
+]

@@ -20,8 +20,8 @@ class Match:
 
     def to_dict(self):
         return [
-            [self.data[0][0].national_id, self.data[0][1]],
-            [self.data[1][0].national_id, self.data[1][1]],
+            [self.data[0][0].chess_id, self.data[0][1]],
+            [self.data[1][0].chess_id, self.data[1][1]],
         ]
 
     def __repr__(self):
