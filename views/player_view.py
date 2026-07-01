@@ -22,5 +22,4 @@ class PlayerView:
 
     @staticmethod
     def show_message(message):
-        """Affiche un message générique (confirmation, erreur...)."""
         print(message)
