@@ -1,7 +1,9 @@
-class MenuView:
+from interfaces.menu_interface import MenuInterface
 
-    @staticmethod
-    def show_main_menu():
+
+class MenuView(MenuInterface):
+
+    def show_main_menu(self):
         print("\n=== Gestion de tournoi d'échecs ===")
         print("1. Ajouter un joueur")
         print("2. Lister les joueurs")
@@ -10,6 +12,5 @@ class MenuView:
         print("5. Quitter")
         return input("Votre choix : ")
 
-    @staticmethod
-    def show_message(message):
+    def show_message(self, message):
         print(message)

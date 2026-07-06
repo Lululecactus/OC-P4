@@ -1,7 +1,9 @@
-class TournamentView:
+from interfaces.tournament_interface import TournamentInterface
 
-    @staticmethod
-    def prompt_new_tournament():
+
+class TournamentView(TournamentInterface):
+
+    def prompt_new_tournament(self):
         print("\n--- Créer un nouveau tournoi ---")
         name = input("Nom du tournoi : ")
         location = input("Lieu : ")
@@ -11,58 +13,47 @@ class TournamentView:
         description = input("Description (optionnel) : ")
         return name, location, start_date, end_date, number_of_rounds, description
 
-    @staticmethod
-    def show_tournaments(tournaments_data):
+    def show_tournaments(self, tournaments_data):
         if not tournaments_data:
             print("\nAucun tournoi enregistré pour le moment.")
             return
-
         print("\n--- Liste des tournois ---")
         for t in tournaments_data:
             print(f"{t['name']} - {t['location']} "
                   f"({t['start_date']} -> {t['end_date']})")
 
-    @staticmethod
-    def prompt_select_tournament(tournaments_data):
+    def prompt_select_tournament(self, tournaments_data):
         if not tournaments_data:
             print("\nAucun tournoi disponible.")
             return None
-
         print("\n--- Sélectionner un tournoi ---")
         for i, t in enumerate(tournaments_data, 1):
             print(f"{i}. {t['name']} ({t['start_date']})")
-
         choice = input("Numéro du tournoi (0 pour annuler) : ")
         if choice == "0" or not choice.isdigit():
             return None
-
         index = int(choice) - 1
         if 0 <= index < len(tournaments_data):
             return tournaments_data[index]["name"]
         return None
 
-    @staticmethod
-    def prompt_add_player(players):
+    def prompt_add_player(self, players):
         if not players:
             print("\nAucun joueur disponible.")
             return None
-
         print("\n--- Inscrire un joueur au tournoi ---")
         for i, player in enumerate(players, 1):
             print(f"{i}. {player.first_name} {player.last_name} "
                   f"({player.chess_id})")
-
         choice = input("Numéro du joueur (0 pour terminer) : ")
         if choice == "0" or not choice.isdigit():
             return None
-
         index = int(choice) - 1
         if 0 <= index < len(players):
             return players[index].chess_id
         return None
 
-    @staticmethod
-    def show_round(round_obj):
+    def show_round(self, round_obj):
         print(f"\n--- {round_obj.name} ---")
         for i, match in enumerate(round_obj.matches, 1):
             p1, s1 = match.data[0]
@@ -70,8 +61,7 @@ class TournamentView:
             print(f"{i}. {p1.first_name} {p1.last_name} "
                   f"vs {p2.first_name} {p2.last_name}")
 
-    @staticmethod
-    def prompt_match_result(match, match_number):
+    def prompt_match_result(self, match, match_number):
         p1 = match.data[0][0]
         p2 = match.data[1][0]
         print(f"\nMatch {match_number} : "
@@ -85,13 +75,11 @@ class TournamentView:
             return int(choice)
         return 0
 
-    @staticmethod
-    def show_standings(players):
+    def show_standings(self, players):
         print("\n--- Classement actuel ---")
         for i, player in enumerate(players, 1):
             print(f"{i}. {player.first_name} {player.last_name} "
                   f"- {player.points} pts")
 
-    @staticmethod
-    def show_message(message):
+    def show_message(self, message):
         print(message)

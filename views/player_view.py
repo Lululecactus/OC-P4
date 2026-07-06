@@ -1,7 +1,9 @@
-class PlayerView:
+from interfaces.player_interface import PlayerInterface
 
-    @staticmethod
-    def prompt_new_player():
+
+class PlayerView(PlayerInterface):
+
+    def prompt_new_player(self):
         print("\n--- Ajouter un nouveau joueur ---")
         last_name = input("Nom de famille : ")
         first_name = input("Prénom : ")
@@ -9,17 +11,14 @@ class PlayerView:
         chess_id = input("Identifiant national (ex: AB12345) : ")
         return last_name, first_name, birth_date, chess_id
 
-    @staticmethod
-    def show_players(players):
+    def show_players(self, players):
         if not players:
             print("\nAucun joueur enregistré pour le moment.")
             return
-
         print("\n--- Liste des joueurs ---")
         for player in players:
             print(f"{player.last_name} {player.first_name} "
                   f"- {player.chess_id} - {player.points} pts")
 
-    @staticmethod
-    def show_message(message):
+    def show_message(self, message):
         print(message)
