@@ -39,7 +39,7 @@ class Tournament:
             "number_of_rounds": self.number_of_rounds,
             "current_round": self.current_round,
             "description": self.description,
-            "players": [player.national_id for player in self.players],
+            "players": [player.chess_id for player in self.players],
             "rounds": [round_.to_dict() for round_ in self.rounds],
         }
 
