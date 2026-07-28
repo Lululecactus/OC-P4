@@ -5,7 +5,6 @@ class TournamentInterface(ABC):
 
     @abstractmethod
     def prompt_new_tournament(self):
-        """Renvoie (name, location, start_date, end_date,number_of_rounds, description)."""
         pass
 
     @abstractmethod
@@ -26,7 +25,6 @@ class TournamentInterface(ABC):
 
     @abstractmethod
     def prompt_match_result(self, match, match_number):
-        """Renvoie 0, 1 ou 2."""
         pass
 
     @abstractmethod
@@ -36,4 +34,12 @@ class TournamentInterface(ABC):
 
     @abstractmethod
     def show_message(self, message):
+        pass
+
+    @abstractmethod
+    def show_tournament_menu(self, current_tournament):
+        pass
+
+    @abstractmethod
+    def wait_for_enter(self):
         pass
