@@ -1,7 +1,7 @@
 import json
 import os
 
-from models.player_storage import load_players
+
 from models.tournament import Tournament
 from models.round import Round
 from models.match import Match
