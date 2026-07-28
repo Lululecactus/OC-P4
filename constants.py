@@ -1,10 +1,13 @@
-
 # Menu principal
-MAIN_ADD_PLAYER = "1"
-MAIN_LIST_PLAYERS = "2"
-MAIN_TOURNAMENTS = "3"
-MAIN_REPORTS = "4"
-MAIN_QUIT = "5"
+MAIN_PLAYERS = "1"
+MAIN_TOURNAMENTS = "2"
+MAIN_REPORTS = "3"
+MAIN_QUIT = "4"
+
+# Sous-menu joueurs
+PLAYER_ADD = "1"
+PLAYER_LIST = "2"
+PLAYER_BACK = "0"
 
 # Sous-menu tournois
 TOURNAMENT_CREATE = "1"
