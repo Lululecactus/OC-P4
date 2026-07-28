@@ -47,6 +47,7 @@ class ReportController:
             self.view.show_tournament_rounds_and_matches(tournament)
 
     def reports_menu(self):
+        
         while True:
             print("\n--- Rapports ---")
             print(f"{REPORT_ALL_PLAYERS}. Tous les joueurs (alphabétique)")
@@ -60,14 +61,19 @@ class ReportController:
 
             if choice == REPORT_ALL_PLAYERS:
                 self.report_all_players()
+                input("\nAppuyez sur Entrée pour continuer...")
             elif choice == REPORT_ALL_TOURNAMENTS:
                 self.report_all_tournaments()
+                input("\nAppuyez sur Entrée pour continuer...")
             elif choice == REPORT_TOURNAMENT_INFO:
                 self.report_tournament_info()
+                input("\nAppuyez sur Entrée pour continuer...")
             elif choice == REPORT_TOURNAMENT_PLAYERS:
                 self.report_tournament_players()
+                input("\nAppuyez sur Entrée pour continuer...")
             elif choice == REPORT_TOURNAMENT_ROUNDS:
                 self.report_tournament_rounds()
+                input("\nAppuyez sur Entrée pour continuer...")
             elif choice == REPORT_BACK:
                 break
             else:
