@@ -80,6 +80,28 @@ class TournamentView(TournamentInterface):
         for i, player in enumerate(players, 1):
             print(f"{i}. {player.first_name} {player.last_name} "
                   f"- {player.points} pts")
+            
+    def show_tournament_menu(self, current_tournament):
+        
+        print("\n--- Gestion du tournoi ---")
+        if current_tournament:
+            print(f"Tournoi actif : {current_tournament.name} "
+                  f"(tour {current_tournament.current_round}/"
+                  f"{current_tournament.number_of_rounds})")
+        else:
+            print("Aucun tournoi actif.")
+
+        print("1. Créer un nouveau tournoi")
+        print("2. Charger un tournoi existant")
+        print("3. Inscrire des joueurs")
+        print("4. Lancer le tour suivant")
+        print("5. Enregistrer les résultats du tour")
+        print("6. Voir le classement")
+        print("0. Retour au menu principal")
+        return input("Votre choix : ")
 
     def show_message(self, message):
         print(message)
+
+    def wait_for_enter(self):
+        input("\nAppuyez sur Entrée pour continuer...")
