@@ -1,5 +1,5 @@
 class Player:
-   
+
     def __init__(self, last_name, first_name, birth_date, chess_id):
         self.last_name = last_name
         self.first_name = first_name
@@ -11,7 +11,7 @@ class Player:
         self.points += amount
 
     def to_dict(self):
-    # Object -> JSON
+        # Object -> JSON
         return {
             "last_name": self.last_name,
             "first_name": self.first_name,
@@ -22,7 +22,7 @@ class Player:
 
     @classmethod
     def from_dict(cls, data):
-    # JSON -> Object
+        # JSON -> Object
         player = cls(
             data["last_name"],
             data["first_name"],
@@ -33,7 +33,7 @@ class Player:
         return player
 
     def __repr__(self):
-    # Définit ce qui s'affiche quand on fait print player.
+        # Définit ce qui s'affiche quand on fait print player.
         return (
             f"{self.first_name} {self.last_name} "
             f"({self.chess_id}) - {self.points} pts"

@@ -80,9 +80,9 @@ class TournamentView(TournamentInterface):
         for i, player in enumerate(players, 1):
             print(f"{i}. {player.first_name} {player.last_name} "
                   f"- {player.points} pts")
-            
+
     def show_tournament_menu(self, current_tournament):
-        
+
         print("\n--- Gestion du tournoi ---")
         if current_tournament:
             print(f"Tournoi actif : {current_tournament.name} "

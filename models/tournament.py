@@ -21,7 +21,7 @@ class Tournament:
         return self.current_round >= self.number_of_rounds
 
     def generate_round_pairs_random(self):
-        
+
         shuffled_players = self.players.copy()
         random.shuffle(shuffled_players)
 

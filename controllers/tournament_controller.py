@@ -208,7 +208,7 @@ class TournamentController:
         self.view.show_standings(ranked)
 
     def tournament_menu(self):
-        
+
         while True:
             choice = self.view.show_tournament_menu(self.current_tournament)
 

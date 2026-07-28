@@ -1,10 +1,10 @@
 class Match:
-    
+
     def __init__(self, player1, player2):
         self.data = ([player1, 0.0], [player2, 0.0])
 
     def set_result(self, result):
-    
+
         if result == 1:
             self.data[0][1] = 1.0
             self.data[1][1] = 0.0

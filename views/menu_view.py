@@ -1,5 +1,4 @@
 class MenuView:
-   
 
     def show_main_menu(self):
         print("\n========================================")

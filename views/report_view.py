@@ -1,5 +1,6 @@
 from interfaces.report_interface import ReportInterface
 
+
 class ReportView(ReportInterface):
 
     def show_all_players_alpha(self, players):

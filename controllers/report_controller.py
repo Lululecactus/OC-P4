@@ -47,7 +47,7 @@ class ReportController:
             self.view.show_tournament_rounds_and_matches(tournament)
 
     def reports_menu(self):
-        
+
         while True:
             print("\n--- Rapports ---")
             print(f"{REPORT_ALL_PLAYERS}. Tous les joueurs (alphabétique)")
