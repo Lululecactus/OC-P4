@@ -1,4 +1,12 @@
 from interfaces.report_interface import ReportInterface
+from constants import (
+    REPORT_ALL_PLAYERS,
+    REPORT_ALL_TOURNAMENTS,
+    REPORT_TOURNAMENT_INFO,
+    REPORT_TOURNAMENT_PLAYERS,
+    REPORT_TOURNAMENT_ROUNDS,
+    REPORT_BACK,
+)
 
 
 class ReportView(ReportInterface):
@@ -72,3 +80,14 @@ class ReportView(ReportInterface):
 
     def show_message(self, message):
         print(message)
+
+    def show_report_menu(self):
+
+        print("\n--- Rapports ---")
+        print(f"{REPORT_ALL_PLAYERS}. Tous les joueurs (alphabétique)")
+        print(f"{REPORT_ALL_TOURNAMENTS}. Tous les tournois")
+        print(f"{REPORT_TOURNAMENT_INFO}. Informations d'un tournoi")
+        print(f"{REPORT_TOURNAMENT_PLAYERS}. Joueurs d'un tournoi")
+        print(f"{REPORT_TOURNAMENT_ROUNDS}. Tours et matchs d'un tournoi")
+        print(f"{REPORT_BACK}. Retour au menu principal")
+        return input("Votre choix : ")

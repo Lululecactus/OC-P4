@@ -47,17 +47,8 @@ class ReportController:
             self.view.show_tournament_rounds_and_matches(tournament)
 
     def reports_menu(self):
-
         while True:
-            print("\n--- Rapports ---")
-            print(f"{REPORT_ALL_PLAYERS}. Tous les joueurs (alphabétique)")
-            print(f"{REPORT_ALL_TOURNAMENTS}. Tous les tournois")
-            print(f"{REPORT_TOURNAMENT_INFO}. Informations d'un tournoi")
-            print(f"{REPORT_TOURNAMENT_PLAYERS}. Joueurs d'un tournoi")
-            print(f"{REPORT_TOURNAMENT_ROUNDS}. Tours et matchs d'un tournoi")
-            print(f"{REPORT_BACK}. Retour au menu principal")
-
-            choice = input("Votre choix : ")
+            choice = self.view.show_report_menu()
 
             if choice == REPORT_ALL_PLAYERS:
                 self.report_all_players()

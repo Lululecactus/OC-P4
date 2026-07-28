@@ -30,3 +30,7 @@ class ReportInterface(ABC):
     @abstractmethod
     def show_message(self, message):
         pass
+
+    @abstractmethod
+    def show_report_menu(self):
+        pass

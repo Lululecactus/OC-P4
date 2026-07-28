@@ -33,5 +33,12 @@
     "birth_date": "1989-04-01",
     "chess_id": "DF23679",
     "points": 0.0
+  },
+  {
+    "last_name": "kulpa",
+    "first_name": "nicolas",
+    "birth_date": "1989-01-04",
+    "chess_id": "SD53419",
+    "points": 0.0
   }
 ]
