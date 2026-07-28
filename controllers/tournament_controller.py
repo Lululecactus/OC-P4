@@ -208,38 +208,36 @@ class TournamentController:
         self.view.show_standings(ranked)
 
     def tournament_menu(self):
+        
         while True:
-            print("\n--- Gestion du tournoi ---")
-            if self.current_tournament:
-                print(f"Tournoi actif : {self.current_tournament.name} "
-                      f"(tour {self.current_tournament.current_round}/"
-                      f"{self.current_tournament.number_of_rounds})")
-            else:
-                print("Aucun tournoi actif.")
-
-            print(f"{TOURNAMENT_CREATE}. Créer un nouveau tournoi")
-            print(f"{TOURNAMENT_LOAD}. Charger un tournoi existant")
-            print(f"{TOURNAMENT_ADD_PLAYERS}. Inscrire des joueurs")
-            print(f"{TOURNAMENT_START_ROUND}. Lancer le tour suivant")
-            print(f"{TOURNAMENT_RECORD_RESULTS}. Enregistrer les résultats")
-            print(f"{TOURNAMENT_STANDINGS}. Voir le classement")
-            print(f"{TOURNAMENT_BACK}. Retour au menu principal")
-
-            choice = input("Votre choix : ")
+            choice = self.view.show_tournament_menu(self.current_tournament)
 
             if choice == TOURNAMENT_CREATE:
                 self.create_tournament()
+                self.view.wait_for_enter()
+
             elif choice == TOURNAMENT_LOAD:
                 self.load_existing_tournament()
+                self.view.wait_for_enter()
+
             elif choice == TOURNAMENT_ADD_PLAYERS:
                 self.add_players_to_tournament()
+                self.view.wait_for_enter()
+
             elif choice == TOURNAMENT_START_ROUND:
                 self.start_next_round()
+                self.view.wait_for_enter()
+
             elif choice == TOURNAMENT_RECORD_RESULTS:
                 self.record_round_results()
+                self.view.wait_for_enter()
+
             elif choice == TOURNAMENT_STANDINGS:
                 self.show_current_standings()
+                self.view.wait_for_enter()
+
             elif choice == TOURNAMENT_BACK:
                 break
+
             else:
                 self.view.show_message("Choix invalide.")
