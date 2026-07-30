@@ -79,8 +79,8 @@ class ReportView(ReportInterface):
         return None
 
     def show_message(self, message):
-            print(message)
-            input("\nAppuyez sur Entrée pour continuer")
+        print(message)
+        input("\nAppuyez sur Entrée pour continuer")
 
     def show_report_menu(self):
 

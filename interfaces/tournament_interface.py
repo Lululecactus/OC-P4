@@ -39,4 +39,3 @@ class TournamentInterface(ABC):
     @abstractmethod
     def show_tournament_menu(self, current_tournament):
         pass
-

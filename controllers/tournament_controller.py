@@ -26,7 +26,6 @@ def is_valid_date(date_str):
 
 
 class TournamentController:
-   
 
     def __init__(self, view: TournamentInterface):
         self.view = view
@@ -40,7 +39,7 @@ class TournamentController:
 
     def create_tournament(self):
         (name, location, start_date, end_date,
-        number_of_rounds, description) = self.view.prompt_new_tournament()
+         number_of_rounds, description) = self.view.prompt_new_tournament()
 
         if not is_valid_date(start_date):
             self.view.show_message(

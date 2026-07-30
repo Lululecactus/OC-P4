@@ -19,5 +19,5 @@ class MenuView:
         return input("Votre choix : ")
 
     def show_message(self, message):
-            print(message)
-            input("\nAppuyez sur Entrée pour continuer")
+        print(message)
+        input("\nAppuyez sur Entrée pour continuer")
