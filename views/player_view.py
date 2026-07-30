@@ -1,4 +1,6 @@
+from constants import PLAYER_ADD, PLAYER_BACK, PLAYER_LIST
 from interfaces.player_interface import PlayerInterface
+
 
 
 class PlayerView(PlayerInterface):
@@ -23,3 +25,11 @@ class PlayerView(PlayerInterface):
     def show_message(self, message):
         print(message)
         input("\nAppuyez sur Entrée pour continuer")
+
+    def show_player_menu(self):
+    
+        print("\n--- Joueurs ---")
+        print(f"{PLAYER_ADD}. Ajouter un joueur")
+        print(f"{PLAYER_LIST}. Lister les joueurs")
+        print(f"{PLAYER_BACK}. Retour")
+        return input("Votre choix : ")
