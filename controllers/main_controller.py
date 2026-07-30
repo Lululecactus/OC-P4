@@ -1,5 +1,3 @@
-from models.player_storage import load_players
-from utils import clear_screen
 from views.menu_view import MenuView
 from views.player_view import PlayerView
 from views.tournament_view import TournamentView
@@ -12,28 +10,16 @@ from constants import (
     MAIN_TOURNAMENTS,
     MAIN_REPORTS,
     MAIN_QUIT,
-    PLAYER_ADD,
-    PLAYER_LIST,
-    PLAYER_BACK,
 )
+from utils import clear_screen
 
 
 class MainController:
-
     def __init__(self):
-        players = load_players()
-        players_dict = {p.chess_id: p for p in players}
-
         self.menu_view = MenuView()
-        player_view = PlayerView()
-        tournament_view = TournamentView()
-        report_view = ReportView()
-
-        self.player_controller = PlayerController(players, player_view)
-        self.tournament_controller = TournamentController(
-            players_dict, tournament_view
-        )
-        self.report_controller = ReportController(players_dict, report_view)
+        self.player_controller = PlayerController(PlayerView())
+        self.tournament_controller = TournamentController(TournamentView())
+        self.report_controller = ReportController(ReportView())
 
     def run(self):
         while True:

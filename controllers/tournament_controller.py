@@ -1,11 +1,8 @@
 from models.tournament import Tournament
 from models.round import Round
 from models.match import Match
-from models.tournament_storage import (
-    save_tournament,
-    load_all_tournaments,
-    load_tournament,
-)
+from models.tournament_storage import TournamentStorage
+from models.player_storage import PlayerStorage
 from interfaces.tournament_interface import TournamentInterface
 from constants import (
     TOURNAMENT_CREATE,
@@ -16,14 +13,21 @@ from constants import (
     TOURNAMENT_STANDINGS,
     TOURNAMENT_BACK,
 )
+from utils import clear_screen
 
 
 class TournamentController:
+   
 
-    def __init__(self, players_dict: dict, view: TournamentInterface):
-        self.players_dict = players_dict
+    def __init__(self, view: TournamentInterface):
         self.view = view
+        self.storage = TournamentStorage()
+        self.player_storage = PlayerStorage()
         self.current_tournament = None
+
+    def _get_players_dict(self):
+        players = self.player_storage.load()
+        return {p.chess_id: p for p in players}
 
     def create_tournament(self):
         (name, location, start_date, end_date,
@@ -39,7 +43,7 @@ class TournamentController:
             number_of_rounds=rounds,
             description=description,
         )
-        save_tournament(tournament)
+        self.storage.save(tournament)
         self.current_tournament = tournament
         self.view.show_message(
             f"Tournoi '{name}' créé et sauvegardé avec succès."
@@ -53,9 +57,10 @@ class TournamentController:
             )
             return
 
+        players_dict = self._get_players_dict()
         already_in = [p.chess_id for p in self.current_tournament.players]
         available = [
-            p for p in self.players_dict.values()
+            p for p in players_dict.values()
             if p.chess_id not in already_in
         ]
 
@@ -63,10 +68,10 @@ class TournamentController:
             chess_id = self.view.prompt_add_player(available)
             if chess_id is None:
                 break
-            player = self.players_dict[chess_id]
+            player = players_dict[chess_id]
             self.current_tournament.add_player(player)
             available = [p for p in available if p.chess_id != chess_id]
-            save_tournament(self.current_tournament)
+            self.storage.save(self.current_tournament)
             self.view.show_message(
                 f"{player.first_name} {player.last_name} inscrit(e)."
             )
@@ -104,7 +109,7 @@ class TournamentController:
             round_obj.add_match(match)
 
         t.rounds.append(round_obj)
-        save_tournament(t)
+        self.storage.save(t)
         self.view.show_message(f"\n{round_name} lancé !")
         self.view.show_round(round_obj)
 
@@ -171,20 +176,22 @@ class TournamentController:
             match.set_result(result)
 
         current_round.close()
-        save_tournament(t)
+        self.storage.save(t)
         self.view.show_standings(
             sorted(t.players, key=lambda p: p.points, reverse=True)
         )
         self.view.show_message("\nTour terminé et sauvegardé.")
 
     def load_existing_tournament(self):
-        tournaments_data = load_all_tournaments()
+        tournaments_data = self.storage.load_all()
         name = self.view.prompt_select_tournament(tournaments_data)
 
         if name is None:
             return
 
-        tournament = load_tournament(name, self.players_dict)
+        players_dict = self._get_players_dict()
+        tournament = self.storage.load(name, players_dict)
+
         if tournament:
             self.current_tournament = tournament
             self.view.show_message(
@@ -208,36 +215,23 @@ class TournamentController:
         self.view.show_standings(ranked)
 
     def tournament_menu(self):
-
         while True:
+            clear_screen()
             choice = self.view.show_tournament_menu(self.current_tournament)
 
             if choice == TOURNAMENT_CREATE:
                 self.create_tournament()
-                
-
             elif choice == TOURNAMENT_LOAD:
                 self.load_existing_tournament()
-                
-
             elif choice == TOURNAMENT_ADD_PLAYERS:
                 self.add_players_to_tournament()
-                
-
             elif choice == TOURNAMENT_START_ROUND:
                 self.start_next_round()
-                
-
             elif choice == TOURNAMENT_RECORD_RESULTS:
                 self.record_round_results()
-                
-
             elif choice == TOURNAMENT_STANDINGS:
                 self.show_current_standings()
-                
-
             elif choice == TOURNAMENT_BACK:
                 break
-
             else:
                 self.view.show_message("Choix invalide.")
