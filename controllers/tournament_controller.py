@@ -14,6 +14,15 @@ from constants import (
     TOURNAMENT_BACK,
 )
 from utils import clear_screen
+from datetime import datetime
+
+
+def is_valid_date(date_str):
+    try:
+        datetime.strptime(date_str, "%Y-%m-%d")
+        return True
+    except ValueError:
+        return False
 
 
 class TournamentController:
@@ -31,7 +40,19 @@ class TournamentController:
 
     def create_tournament(self):
         (name, location, start_date, end_date,
-         number_of_rounds, description) = self.view.prompt_new_tournament()
+        number_of_rounds, description) = self.view.prompt_new_tournament()
+
+        if not is_valid_date(start_date):
+            self.view.show_message(
+                "Date de début invalide. Format attendu : AAAA-MM-JJ."
+            )
+            return
+
+        if not is_valid_date(end_date):
+            self.view.show_message(
+                "Date de fin invalide. Format attendu : AAAA-MM-JJ."
+            )
+            return
 
         rounds = int(number_of_rounds) if number_of_rounds.isdigit() else 4
 

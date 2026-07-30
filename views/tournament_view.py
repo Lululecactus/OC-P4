@@ -4,11 +4,27 @@ from interfaces.tournament_interface import TournamentInterface
 class TournamentView(TournamentInterface):
 
     def prompt_new_tournament(self):
+        from datetime import datetime
         print("\n--- Créer un nouveau tournoi ---")
         name = input("Nom du tournoi : ")
         location = input("Lieu : ")
-        start_date = input("Date de début (AAAA-MM-JJ) : ")
-        end_date = input("Date de fin (AAAA-MM-JJ) : ")
+
+        while True:
+            start_date = input("Date de début (AAAA-MM-JJ) : ")
+            try:
+                datetime.strptime(start_date, "%Y-%m-%d")
+                break
+            except ValueError:
+                print("Format invalide. Exemple : 2026-06-21")
+
+        while True:
+            end_date = input("Date de fin (AAAA-MM-JJ) : ")
+            try:
+                datetime.strptime(end_date, "%Y-%m-%d")
+                break
+            except ValueError:
+                print("Format invalide. Exemple : 2026-06-21")
+
         number_of_rounds = input("Nombre de tours (laisser vide = 4) : ")
         description = input("Description (optionnel) : ")
         return name, location, start_date, end_date, number_of_rounds, description
