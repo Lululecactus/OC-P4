@@ -19,7 +19,5 @@ class MenuView:
         return input("Votre choix : ")
 
     def show_message(self, message):
-        print(message)
-
-    def wait_for_enter(self):
-        input("\nAppuyez sur Entrée pour continuer...")
+            print(message)
+            input("\nAppuyez sur Entrée pour continuer")

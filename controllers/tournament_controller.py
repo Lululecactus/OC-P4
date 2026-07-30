@@ -214,27 +214,27 @@ class TournamentController:
 
             if choice == TOURNAMENT_CREATE:
                 self.create_tournament()
-                self.view.wait_for_enter()
+                
 
             elif choice == TOURNAMENT_LOAD:
                 self.load_existing_tournament()
-                self.view.wait_for_enter()
+                
 
             elif choice == TOURNAMENT_ADD_PLAYERS:
                 self.add_players_to_tournament()
-                self.view.wait_for_enter()
+                
 
             elif choice == TOURNAMENT_START_ROUND:
                 self.start_next_round()
-                self.view.wait_for_enter()
+                
 
             elif choice == TOURNAMENT_RECORD_RESULTS:
                 self.record_round_results()
-                self.view.wait_for_enter()
+                
 
             elif choice == TOURNAMENT_STANDINGS:
                 self.show_current_standings()
-                self.view.wait_for_enter()
+                
 
             elif choice == TOURNAMENT_BACK:
                 break

@@ -22,3 +22,4 @@ class PlayerView(PlayerInterface):
 
     def show_message(self, message):
         print(message)
+        input("\nAppuyez sur Entrée pour continuer")

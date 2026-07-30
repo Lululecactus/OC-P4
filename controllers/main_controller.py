@@ -40,11 +40,11 @@ class MainController:
 
             if choice == PLAYER_ADD:
                 self.player_controller.create_player()
-                self.menu_view.wait_for_enter()
+                
 
             elif choice == PLAYER_LIST:
                 self.player_controller.list_players()
-                self.menu_view.wait_for_enter()
+                
 
             elif choice == PLAYER_BACK:
                 break

@@ -40,6 +40,3 @@ class TournamentInterface(ABC):
     def show_tournament_menu(self, current_tournament):
         pass
 
-    @abstractmethod
-    def wait_for_enter(self):
-        pass
